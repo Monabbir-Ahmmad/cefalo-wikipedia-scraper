@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class IMovieScraper(ABC):
+class MovieScraper(ABC):
     @abstractmethod
     def __init__(self, base_url):
         pass
