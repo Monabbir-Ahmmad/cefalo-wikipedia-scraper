@@ -4,6 +4,7 @@ from app.interfaces.movie_scraper import IMovieScraper
 from app.services.movie_scraper import WikipediaMovieScraper
 from app.config.database import db
 
+
 def scrape_movie_details(scraper: IMovieScraper, movie):
     try:
         movie_details = scraper.get_movie_details(movie['link'])
@@ -34,6 +35,7 @@ def save_movie_details_to_file(movie_details_list):
         json.dump(movie_details_list, file, indent=4)
     print("Data saved to 'movie_details.json' successfully!")
 
+
 def insert_movie_details_to_db():
     with open('movie_details.json', 'r') as file:
         movie_details_list = json.load(file)
@@ -47,8 +49,9 @@ def main():
     scraper = WikipediaMovieScraper(base_url)
     
     movie_details_list = scrape_all_movie_details(scraper)
-    save_movie_details_to_file(movie_details_list)
+
     insert_movie_details_to_db()
+
 
 if __name__ == '__main__':
     main()
