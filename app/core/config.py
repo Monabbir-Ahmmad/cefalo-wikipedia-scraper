@@ -8,4 +8,7 @@ env_path = os.path.join(current_dir, '../../.env')
 env_values = dotenv_values(env_path)
 
 class Config:
-    MONGO_URI = env_values.get('MONGO_URI')
+    PROJECT_NAME = "Cefalo Python Assignment"
+    MONGODB_URI = env_values.get('MONGODB_URI')
+    API = "/api"
+    API_V1_STR = "/api/v1"

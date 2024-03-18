@@ -1,15 +1,14 @@
 from fastapi import APIRouter, HTTPException
-from app.config.database import db
 from app.dto import movie_dto
 from typing import List
 from app.schemas.movie import MovieSchema
-from factory import AppFactory
+from app.core.factory import AppFactory
 
 app_factory = AppFactory()
 
 movie_service = app_factory.movie_service
 
-router = APIRouter()
+router = APIRouter(prefix="/movies", tags=["movies"])
 
 @router.get("/")
 async def get_movies(page: int = 1, count: int = 10) -> List[dict]:
