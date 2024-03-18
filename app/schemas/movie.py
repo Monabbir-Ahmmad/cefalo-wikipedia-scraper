@@ -1,7 +1,7 @@
 from typing import List, Optional, Union
 from pydantic import BaseModel
 
-class MovieModel(BaseModel):
+class MovieSchema(BaseModel):
     _id: Optional[str]
     title: str
     link: Optional[Union[str, None]]
