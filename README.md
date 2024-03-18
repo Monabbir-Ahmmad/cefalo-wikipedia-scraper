@@ -44,7 +44,7 @@ pip install -r requirements.txt
 ## Environment variables example
 
 ```bash
-MONGO_URI = 'Your MongoDB Atlas connection string'
+MONGODB_URI = 'Your MongoDB Atlas connection string'
 ```
 
 ## Running the Application
