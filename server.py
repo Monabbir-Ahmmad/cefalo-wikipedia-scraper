@@ -4,7 +4,6 @@ from app.core.config import Config
 from app.utils.decorator import singleton
 from app.core.factory import AppFactory
 
-
 @singleton
 class AppCreator:
     def __init__(self):
@@ -15,9 +14,7 @@ class AppCreator:
         )
 
         self.factory = AppFactory()
-        self.factory_2 = AppFactory()
-
-
+        
         @self.app.get("/")
         def root():
             return "Service is working"
