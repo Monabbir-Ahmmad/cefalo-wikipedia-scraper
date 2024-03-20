@@ -2,7 +2,7 @@ from app.interfaces.movie_repository import MovieRepository
 from bson import ObjectId
 
 
-class MovieRepository(MovieRepository):
+class MongoMovieRepository(MovieRepository):
     def __init__(self, db):
         self.db = db
 
