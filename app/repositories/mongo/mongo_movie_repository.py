@@ -15,17 +15,17 @@ class MongoMovieRepository(MovieRepository):
         return self.db.movies.insert_many(movies)
 
     def get_movie(self, movie_id):
-        return self.db.movies.aggregate(
-            [
-                {"$match": {"_id": ObjectId(movie_id)}},
-                {
-                    "$addFields": {
-                        "averageRating": {"$avg": "$ratings.rating"},
-                        "ratingsCount": {"$size": "$ratings"},
-                    }
-                },
-            ]
-        )
+        pipeline = [
+            {"$match": {"_id": movie_id}},
+            {
+                "$addFields": {
+                    "averageRating": {"$avg": "$ratings.rating"},
+                    "ratingsCount": {"$size": "$ratings"},
+                }
+            },
+        ]
+        result = list(self.db.movies.aggregate(pipeline))
+        return result[0] if result else None
 
     def get_all_movies(self, page=1, count=10):
         return self.db.movies.aggregate(
