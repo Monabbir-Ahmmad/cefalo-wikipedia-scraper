@@ -45,8 +45,3 @@ async def delete_movie(movie_id: str) -> dict:
         raise HTTPException(status_code=404, detail="Movie not found")
 
     return {"message": f"Movie with id {movie_id} has been deleted"}
-
-@router.get("/search/{search_term}")
-async def search_movies(search_term: str) -> List[dict]:
-    movies = movie_service.search_movies(search_term)
-    return movie_dto.list_response(movies)
